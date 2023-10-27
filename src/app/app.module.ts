@@ -7,11 +7,38 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { locale as esLang } from '../assets/i18n/es';
 import { locale as enLang } from '../assets/i18n/en';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import localeEs from '@angular/common/locales/es';
+import localeEn from '@angular/common/locales/en';
+import { DatePipe, registerLocaleData } from '@angular/common';
+import { spinnerInterceptor } from './core/middlewares/spinner.interceptor';
+import { SpinnerModule } from './shared/components/spinner/spinner.module';
+
+registerLocaleData(localeEs);
+registerLocaleData(localeEn);
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, TranslateModule.forRoot()],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    TranslateModule.forRoot(),
+    HttpClientModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    SpinnerModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: spinnerInterceptor,
+      multi: true,
+    },
+    provideNgxMask(),
+    DatePipe,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

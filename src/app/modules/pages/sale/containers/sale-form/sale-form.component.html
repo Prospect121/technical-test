@@ -1,0 +1,339 @@
+<section class="flex flex-1 max-w-4xl m-4 max-h-[94vh] bg-white rounded-2xl">
+  <div class="flex flex-col items-start px-2 md:px-8 py-8 mx-auto">
+    <div class="p-2">
+      <h1 class="text-xl font-bold leading-tight text-primary-500">{{ 'masters.sale.form.title' | translate }}</h1>
+    </div>
+    <form
+      class="flex flex-wrap gap-14 gap-y-8 p-4 justify-between overflow-y-auto overflow-x-hidden"
+      [formGroup]="form">
+      <ng-container *ngIf="form | formControl: 'documentType' as documentTypeField">
+        <div class="form__group">
+          <div class="relative">
+            <select [appInputError]="documentTypeField" formControlName="documentType" class="peer block">
+              <option selected [value]="undefined">
+                {{ 'masters.sale.form.fields.documentTypeSelect' | translate }}
+              </option>
+              <option *ngFor="let documentType of dependencyItems?.documentTypes" [value]="documentType.id">
+                {{ documentType.name }}
+              </option>
+            </select>
+            <label for="documentType" class="absolute">
+              {{ 'masters.sale.form.fields.documentType' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="documentTypeField.touched && documentTypeField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'documentNumber' as documentNumberField">
+        <div class="form__group">
+          <div class="relative">
+            <input
+              type="text"
+              mask="0*"
+              id="documentNumber"
+              [appInputError]="documentNumberField"
+              class="peer block"
+              placeholder=" "
+              formControlName="documentNumber" />
+            <label for="documentNumber" class="absolute">
+              {{ 'masters.sale.form.fields.documentNumber' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="documentNumberField.touched && documentNumberField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'customerName' as customerNameField">
+        <div class="form__group">
+          <div class="relative">
+            <input
+              type="text"
+              id="customerName"
+              [appInputError]="customerNameField"
+              class="peer block"
+              placeholder=" "
+              formControlName="customerName" />
+            <label for="customerName" class="absolute">
+              {{ 'masters.sale.form.fields.customerName' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="customerNameField.touched && customerNameField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'clientLastName' as clientLastNameField">
+        <div class="form__group">
+          <div class="relative">
+            <input
+              type="text"
+              id="clientLastName"
+              [appInputError]="clientLastNameField"
+              class="peer block"
+              placeholder=" "
+              formControlName="clientLastName" />
+            <label for="clientLastName" class="absolute">
+              {{ 'masters.sale.form.fields.clientLastName' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="clientLastNameField.touched && clientLastNameField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'customerEmail' as customerEmailField">
+        <div class="form__group">
+          <div class="relative">
+            <input
+              type="text"
+              id="customerEmail"
+              [appInputError]="customerEmailField"
+              class="peer block"
+              placeholder=" "
+              formControlName="customerEmail" />
+            <label for="customerEmail" class="absolute">
+              {{ 'masters.sale.form.fields.customerEmail' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="customerEmailField.touched && customerEmailField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'cellPhone' as cellPhoneField">
+        <div class="form__group">
+          <div class="relative">
+            <input
+              type="text"
+              id="cellPhone"
+              [appInputError]="cellPhoneField"
+              class="peer block"
+              placeholder=" "
+              formControlName="cellPhone"
+              maxlenght="10"
+              mask="(000) 000-0000" />
+            <label for="cellPhone" class="absolute">
+              {{ 'masters.sale.form.fields.cellPhone' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="cellPhoneField.touched && cellPhoneField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+          <span
+            class="smar-form-error"
+            *ngIf="cellPhoneField.touched && !cellPhoneField?.errors?.['mask'] && cellPhoneField.errors?.['pattern']">
+            {{ 'masters.validations.cellPhone' | translate }}
+          </span>
+          <span class="smar-form-error" *ngIf="cellPhoneField?.touched && cellPhoneField?.errors?.['mask']">
+            {{ 'masters.validations.validFormat' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'shippingType' as shippingTypeField">
+        <div class="flex flex-col gap-y-4">
+          <h3 class="relative text-sm font-bold">
+            {{ 'masters.sale.form.fields.shippingType' | translate }}
+          </h3>
+          <mat-radio-group
+            labelPosition="before"
+            formControlName="shippingType"
+            class="flex ml-5 gap-x-5 justify-between w-full">
+            <mat-radio-button value="NATIONAL">{{
+              'masters.sale.form.shippingType.national' | translate
+            }}</mat-radio-button>
+            <mat-radio-button value="INTERNATIONAL">{{
+              'masters.sale.form.shippingType.international' | translate
+            }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'internationalShippingType' as internationalShippingTypeField">
+        <div class="form__group md:mt-5">
+          <div class="relative" [ngClass]="{ 'smar-form-disabled': internationalShippingTypeField?.disabled }">
+            <select
+              [appInputError]="internationalShippingTypeField"
+              formControlName="internationalShippingType"
+              class="peer block">
+              <option selected [value]="undefined">
+                {{ 'masters.sale.form.fields.internationalShippingTypeSelect' | translate }}
+              </option>
+              <option
+                *ngFor="let internationalShippingType of dependencyItems?.internationalShippingTypes"
+                [value]="internationalShippingType.id">
+                {{ internationalShippingType.name }}
+              </option>
+            </select>
+            <label for="internationalShippingType" class="absolute">
+              {{ 'masters.sale.form.fields.internationalShippingType' | translate }}
+            </label>
+          </div>
+          <span
+            class="smar-form-error"
+            *ngIf="internationalShippingTypeField.touched && internationalShippingTypeField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'selectOperator' as selectOperatorField">
+        <div class="form__group">
+          <div class="relative">
+            <select [appInputError]="selectOperatorField" formControlName="selectOperator" class="peer block">
+              <option selected [value]="undefined">{{ 'masters.sale.form.fields.selectOperator' | translate }}</option>
+              <option *ngFor="let selectOperator of dependencyItems?.selectOperators" [value]="selectOperator.id">
+                {{ selectOperator.name }}
+              </option>
+            </select>
+            <label for="selectOperator" class="absolute">
+              {{ 'masters.sale.form.fields.selectOperator' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="selectOperatorField.touched && selectOperatorField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'numberPackage' as numberPackageField">
+        <div class="form__group">
+          <div class="relative">
+            <select [appInputError]="numberPackageField" formControlName="numberPackage" class="peer block">
+              <option selected [value]="undefined">0</option>
+              <option *ngFor="let numberPackage of dependencyItems?.numberPackages" [value]="numberPackage">
+                {{ numberPackage }}
+              </option>
+            </select>
+            <label for="numberPackage" class="absolute">
+              {{ 'masters.sale.form.fields.numberPackage' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="numberPackageField.touched && numberPackageField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'guideNumber' as guideNumberField">
+        <div class="form__group">
+          <div class="relative">
+            <input
+              type="text"
+              mask="0*"
+              id="guideNumber"
+              [appInputError]="guideNumberField"
+              class="peer block"
+              placeholder=" "
+              formControlName="guideNumber" />
+            <label for="guideNumber" class="absolute">
+              {{ 'masters.sale.form.fields.guideNumber' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="guideNumberField.touched && guideNumberField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'saleValue' as saleValueField">
+        <div class="form__group">
+          <div class="relative">
+            <input
+              type="text"
+              prefix="$ "
+              mask="separator.2"
+              thousandSeparator=","
+              id="saleValue"
+              [appInputError]="saleValueField"
+              class="peer block"
+              placeholder=" "
+              formControlName="saleValue" />
+            <label for="saleValue" class="absolute">
+              {{ 'masters.sale.form.fields.saleValue' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="saleValueField.touched && saleValueField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'paymentMethod' as paymentMethodField">
+        <div class="form__group">
+          <div class="relative">
+            <select [appInputError]="paymentMethodField" formControlName="paymentMethod" class="peer block">
+              <option selected [value]="undefined">
+                {{ 'masters.sale.form.fields.paymentMethodSelect' | translate }}
+              </option>
+              <option *ngFor="let paymentMethod of dependencyItems?.paymentMethods" [value]="paymentMethod.id">
+                {{ paymentMethod.name }}
+              </option>
+            </select>
+            <label for="paymentMethod" class="absolute">
+              {{ 'masters.sale.form.fields.paymentMethod' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="paymentMethodField.touched && paymentMethodField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'transferType' as transferTypeField">
+        <div class="form__group">
+          <div class="relative" [ngClass]="{ 'smar-form-disabled': transferTypeField?.disabled }">
+            <select [appInputError]="transferTypeField" formControlName="transferType" class="peer block">
+              <option selected [value]="undefined">
+                {{ 'masters.sale.form.fields.transferTypeSelect' | translate }}
+              </option>
+              <option
+                *ngFor="let transferTypeSelect of dependencyItems?.transferTypeSelects"
+                [value]="transferTypeSelect.id">
+                {{ transferTypeSelect.name }}
+              </option>
+            </select>
+            <label for="transferType" class="absolute">
+              {{ 'masters.sale.form.fields.transferType' | translate }}
+            </label>
+          </div>
+          <span class="smar-form-error" *ngIf="transferTypeField.touched && transferTypeField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="form | formControl: 'commercialMakeSale' as commercialMakeSaleField">
+        <div class="form__group">
+          <div class="relative">
+            <select [appInputError]="commercialMakeSaleField" formControlName="commercialMakeSale" class="peer block">
+              <option selected [value]="undefined">
+                {{ 'masters.sale.form.fields.commercialMakeSaleSelect' | translate }}
+              </option>
+              <option
+                *ngFor="let commercialMakeSale of dependencyItems?.commercialMakeSales"
+                [value]="commercialMakeSale.id">
+                {{ commercialMakeSale.name }}
+              </option>
+            </select>
+            <label for="commercialMakeSale" class="absolute">
+              {{ 'masters.sale.form.fields.commercialMakeSale' | translate }}
+            </label>
+          </div>
+          <span
+            class="smar-form-error"
+            *ngIf="commercialMakeSaleField.touched && commercialMakeSaleField.errors?.['required']">
+            {{ 'masters.validations.required' | translate }}
+          </span>
+        </div>
+      </ng-container>
+    </form>
+
+    <div class="flex w-full justify-center gap-x-8">
+      <button
+        (click)="close()"
+        class="group relative my-8 flex w-40 md:w-60 justify-center rounded-3xl border border-transparent bg-gray-500 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 hover:bg-primary-400">
+        {{ 'masters.button.cancel' | translate }}
+      </button>
+      <button
+        (click)="onSave()"
+        class="my-8 flex w-40 md:w-60 justify-center rounded-3xl border border-transparent bg-primary-500 py-2 px-4 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 hover:bg-primary-400">
+        {{ 'masters.button.save' | translate }}
+      </button>
+    </div>
+  </div>
+</section>
