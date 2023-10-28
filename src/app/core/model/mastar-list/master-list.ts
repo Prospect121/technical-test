@@ -1,7 +1,7 @@
 import { MasterCrudService } from './../../services/master-crud/master-crud.service';
 import { ICrudder } from './../../interfaces/icrudder';
-import { AfterViewInit, Directive, Inject, Injector, OnDestroy, ViewChild } from '@angular/core';
-import { Subscription, filter, map } from 'rxjs';
+import { AfterViewInit, ChangeDetectorRef, Directive, Inject, Injector, OnDestroy, ViewChild } from '@angular/core';
+import { Observable, Subscription, filter, map } from 'rxjs';
 import { SmarOverlayContainerService } from '../../services/overlay-container/overlay-container.service';
 
 import { ComponentPortal } from '@angular/cdk/portal';
@@ -19,6 +19,7 @@ export interface IMasterListConfig {
 export abstract class MasterList implements OnDestroy, AfterViewInit {
   crudder: ICrudder;
   dataSource: MatTableDataSource<any> = new MatTableDataSource<any>([]);
+  obs: Observable<any> = new Observable<any>();
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   @ViewChild(MatSort) sort?: MatSort;
@@ -29,6 +30,7 @@ export abstract class MasterList implements OnDestroy, AfterViewInit {
     protected crudService: MasterCrudService,
     @Inject('masterConfig') protected masterConfig: IMasterListConfig,
     protected smarOverlayContainerService: SmarOverlayContainerService,
+    protected changeDetectorRef: ChangeDetectorRef,
   ) {
     this.crudder = crudService.getCrudder(masterConfig.uri, masterConfig.uriComplement);
     this.search();
@@ -37,6 +39,8 @@ export abstract class MasterList implements OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator as MatTableDataSourcePaginator;
     this.dataSource.sort = this.sort as MatSort;
+    this.obs = this.dataSource.connect();
+    this.changeDetectorRef.detectChanges();
   }
 
   applyFilter(event: Event) {
@@ -45,6 +49,7 @@ export abstract class MasterList implements OnDestroy, AfterViewInit {
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+      console.log(this.dataSource);
     }
   }
 
@@ -75,6 +80,7 @@ export abstract class MasterList implements OnDestroy, AfterViewInit {
     this.dataSource = new MatTableDataSource(content);
     this.dataSource.paginator = this.paginator as MatTableDataSourcePaginator;
     this.dataSource.sort = this.sort as MatSort;
+    this.obs = this.dataSource.connect();
   }
 
   private _deleteItem(itemId: string) {
@@ -110,5 +116,8 @@ export abstract class MasterList implements OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.subscriptions.forEach((sub) => sub && sub.unsubscribe());
+    if (this.dataSource) {
+      this.dataSource.disconnect();
+    }
   }
 }
