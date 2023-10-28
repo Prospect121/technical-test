@@ -1,0 +1,193 @@
+@mixin style-scroll() {
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+
+  &::-webkit-scrollbar-button:increment,
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+  &::-webkit-scrollbar:horizontal {
+    height: 0px;
+  }
+  &::-webkit-scrollbar:vertical {
+    width: 0px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(42, 50, 75, 0.8);
+    border-radius: 20px;
+    border: 2px solid rgba(146, 146, 146, 0.8);
+    position: relative;
+    right: 2rem;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+}
+@mixin style-scroll-vertical() {
+  @include style-scroll();
+  &::-webkit-scrollbar:vertical {
+    width: 10px;
+  }
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.smar-app-navbar {
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3.8rem;
+    padding: 1rem 3rem;
+    background-color: #ffffff5c;
+    border-bottom: 1px solid rgba(229, 233, 235, 1);
+
+    &__logo {
+      &img {
+        width: 72px;
+        height: 31px;
+      }
+    }
+
+    &__mobile-menu {
+      display: none;
+
+      @media screen and (max-width: 768px) {
+        display: inline-block;
+      }
+
+      &__button {
+        cursor: pointer;
+        border-radius: 8px /* 4px */;
+        border: none;
+        color: rgba(42, 50, 75, 1);
+        background-color: inherit;
+        top: 0.5rem /* 8px */;
+        right: 0.5rem /* 8px */;
+        height: 1.8rem /* 20px */;
+        width: 1.8rem /* 20px */;
+        transition: all 0.2s ease-out;
+
+        :hover {
+          color: rgb(44, 46, 49);
+        }
+      }
+    }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &__notifications {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__button {
+          cursor: pointer;
+          padding: 0.2rem;
+          background-color: transparent;
+          border: none;
+          border-radius: 8px;
+          &:hover {
+            background-color: rgb(243, 244, 246);
+          }
+          &__count {
+            position: relative;
+            bottom: 1.8rem;
+            left: 1rem;
+            font-weight: 600;
+            font-size: 10px;
+            background-color: #ff3410;
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            height: 16px;
+            width: 16px;
+            justify-content: center;
+            align-items: center;
+          }
+        }
+
+        &__popover {
+          width: 260px;
+          min-height: 200px;
+          max-height: 343px;
+          margin: 1.5rem 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 20px;
+          background-color: rgba(42, 50, 75, 0.5);
+          backdrop-filter: blur(2px);
+
+          h4 {
+            margin: 0;
+            padding: 2rem 1rem 0 1rem;
+            font-size: 16px;
+            font-weight: 700;
+          }
+
+          &__notification-list {
+            margin: 0;
+            padding: 0 2rem;
+            list-style: none;
+            overflow-y: scroll;
+            @include style-scroll-vertical();
+
+            &__item {
+              display: flex;
+              margin: 2rem 0;
+              gap: 0.5rem;
+              cursor: pointer;
+
+              img {
+                height: 27px;
+                width: 27px;
+                border-radius: 50%;
+              }
+
+              &__details {
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+                font-weight: 700;
+                p {
+                  margin: 0;
+                  color: rgba(29, 32, 39, 1);
+                }
+                span {
+                  color: white;
+                  width: 150px;
+                  @include ellipsis();
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &__profile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 0 1rem;
+    }
+  }
+}
+
+.group:hover .group-hover {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(0, 0) rotate(0) skewX(0) skewY(0) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}

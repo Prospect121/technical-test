@@ -1,0 +1,57 @@
+<section class="w-full h-screen">
+  <div class="flex flex-col items-start px-2 md:px-8 py-8 gap-y-8">
+    <div class="flex justify-around p-2 w-full items-center">
+      <h1 class="text-xl font-bold m-0 leading-tight text-primary-500">
+        {{ 'masters.reportCovid.title' | translate }}
+      </h1>
+    </div>
+
+    <div class="w-full h-auto flex flex-col justify-center items-center gap-y-6">
+      <form *ngIf="!dataForGraph?.label">
+        <label>
+          <input
+            type="file"
+            accept="{{ acceptFile }}"
+            (change)="onUpload($event)"
+            class="text-sm text-grey-500 file:mr-5 file:py-3 file:px-3 md:file:px-10 file:rounded-full file:border-0 file:text-md file:font-semibold file:text-white file:bg-gradient-to-r file:from-primary-500 file:to-teal-500 hover:file:cursor-pointer hover:file:opacity-80" />
+        </label>
+      </form>
+
+      <div class="flex flex-col gap-5 md:items-center max-w-xs md:max-w-full">
+        <ng-container *ngIf="dataForGraph?.label">
+          <ul>
+            <li class="text-sm font-bold text-primary-500 pb-2">
+              {{ 'masters.reportCovid.answer.maxState' | translate
+              }}<span class="text-sm font-bold text-teal-500">
+                {{ maxStateName }} ({{ maxState | currency: ' ' }})</span
+              >
+            </li>
+            <li class="text-sm font-bold text-primary-500 pb-2">
+              {{ 'masters.reportCovid.answer.minState' | translate
+              }}<span class="text-sm font-bold text-teal-500">
+                {{ minStateName }} ({{ minState | currency: ' ' }})</span
+              >
+            </li>
+            <li class="text-sm font-bold text-primary-500 pb-2">
+              {{ 'masters.reportCovid.answer.mostAffected.part1' | translate }}
+              <span class="text-sm font-bold text-teal-500"> {{ mostAffected?.key }}.</span>
+              {{ 'masters.reportCovid.answer.mostAffected.part2' | translate }}
+              <span class="text-sm font-bold text-teal-500"> ({{ mostAffected?.percentage }}%)</span>
+            </li>
+          </ul>
+        </ng-container>
+
+        <div class="flex flex-col gap-2">
+          <h3 *ngIf="dataForGraph?.label" class="text-lg font-bold text-primary-500">
+            Porcentaje de muertes por estado
+          </h3>
+          <div class="h-auto md:h-[100%]">
+            <div class="w-[50vh] md:w-[100vh]">
+              <canvas #canvas></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
