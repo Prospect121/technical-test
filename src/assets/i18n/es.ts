@@ -71,6 +71,17 @@ export const locale = {
           },
         },
       },
+      login: {
+        title: '¡Hola de nuevo!',
+        subTitle: 'Ingrese su credencial para acceder a su cuenta.',
+        google: 'Iniciar sesión con Google',
+        email: 'Dirección de correo electrónico',
+        password: 'Contraseña',
+        forgotPassword: '¿Olvidaste tu contraseña?',
+        signIn: 'Iniciar sesión',
+        askRegistre: '¿Aún no eres miembro?',
+        registre: 'Registrarse',
+      },
     },
   },
 };

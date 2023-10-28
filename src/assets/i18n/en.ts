@@ -70,6 +70,17 @@ export const locale = {
           },
         },
       },
+      login: {
+        title: 'Hello Again !',
+        subTitle: 'Enter your credential to access your account.',
+        google: ' Log in with Google ',
+        email: 'Email address',
+        password: 'Password',
+        forgotPassword: 'Forgot your password?',
+        signIn: '    Sign in',
+        askRegistre: 'Not a Member yet?',
+        registre: 'Sign up',
+      },
     },
   },
 };
