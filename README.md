@@ -1,37 +1,41 @@
-# TechnicalTest
+#TechnicalTest
 
-Este es un proyecto de **Angular (v16.1.6)** que consta de tres vistas principales: **Login falso**, **Reporte de Análisis de archivo CSV** y **Vista de Ventas (CRUD)**.
+This is an **Angular (v16.1.6)** project that consists of three main views: **Fake Login**, **CSV File Analysis Report** and **Sales View (CRUD)** .
 
-## Inicio Rápido
+## Quick start
 
-Para iniciar el proyecto, sigue estos pasos:
+To start the project, follow these steps:
 
-1.  Clona este repositorio o descárgalo en tu máquina.
+1. Clone this repository or download it to your machine.
 
-2.  Abre una terminal en la ubicación del proyecto y ejecuta el siguiente comando para instalar las dependencias necesarias:
+2. Open a terminal at the project location and run the following command to install the necessary dependencies:
 
-    ```bash
-    npm install
-    ```
+   ```bash
+   npm install
+   ```
 
-3.  Una vez que se completen las instalaciones, puedes iniciar la aplicación Angular. Utiliza uno de los siguientes comandos:
+3. Once the installations are complete, you can launch the Angular application. Use one of the following commands:
 
-    ```bash
-    ng serve
-    ```
+   ```bash
+   ng serve
+   ```
 
-    o
+   either
 
-    ```bash
-    npm start
-    ```
+   ```bash
+   npm start
+   ```
 
-4.  La aplicación se ejecutará en el puerto 4200 de forma predeterminada. Abre tu navegador web e ingresa la siguiente URL para acceder al proyecto:
-    ```bash
-    http://localhost:4200
-    ```
+4. The application will run on port 4200 by default. Open your web browser and enter the following URL to access the project:
+   ```bash
+   http://localhost:4200
+   ```
 
-## Build
+## Application deployed
+
+     ``
+
+##Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
@@ -43,16 +47,16 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `npm run test:coverage` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-# Vistas Principales
+# Main Views
 
-## 1. Login Falso
+## 1. Fake Login
 
-En esta vista, puedes iniciar sesión con cualquier correo y contraseña. Es una funcionalidad falsa para demostración.
+In this view, you can log in with any email and password. It is a fake functionality for demonstration.
 
-## 2. Reporte de Análisis de Archivo CSV
+## 2. CSV File Analysis Report
 
-Esta vista te permite realizar un análisis de un archivo CSV. Proporciona detalles sobre cómo cargar y analizar el archivo CSV.
+This view allows you to perform analysis of a CSV file. Provides details on how to upload and parse the CSV file.
 
-## 3. Vista de Ventas (CRUD)
+## 3. Sales View (CRUD)
 
-En esta vista, puedes realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) en registros de ventas. Proporciona detalles sobre cómo utilizar esta funcionalidad.
+In this view, you can perform CRUD (Create, Read, Update and Delete) operations on sales records. Provides details on how to use this functionality.
