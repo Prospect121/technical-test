@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { SmarOverlayContainerService } from 'src/app/core/services/overlay-container/overlay-container.service';
 
 import { MasterList } from 'src/app/core/model/mastar-list/master-list';
@@ -18,7 +18,8 @@ export class SaleListComponent extends MasterList {
   constructor(
     protected override crudService: MasterCrudService,
     protected override smarOverlayContainerService: SmarOverlayContainerService,
+    protected override changeDetectorRef: ChangeDetectorRef,
   ) {
-    super(crudService, { uri: `${paths.sale}`, uriComplement: '' }, smarOverlayContainerService);
+    super(crudService, { uri: `${paths.sale}`, uriComplement: '' }, smarOverlayContainerService, changeDetectorRef);
   }
 }

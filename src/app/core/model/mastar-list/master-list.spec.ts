@@ -10,6 +10,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { RouterTestingModule } from '@angular/router/testing';
 import { SmarOverlayContainerService } from '../../services/overlay-container/overlay-container.service';
 import { SaleListComponent } from 'src/app/modules/pages/sale/containers/sale-list/sale-list.component';
+import { ChangeDetectorRef } from '@angular/core';
 
 class MockMasterCrudService {
   getCrudder(uri: string, uriComplement: string): ICrudder {
@@ -41,6 +42,7 @@ describe('MasterList', () => {
   let masterList: MasterList;
   let crudServiceSpy: MockMasterCrudService;
   let overlayContainerServiceSpy: jasmine.SpyObj<SmarOverlayContainerService>;
+  let changeDetectorRefSpy: jasmine.SpyObj<ChangeDetectorRef>;
 
   let httpMock: HttpTestingController;
   let mockRequest: Observable<any>;
@@ -62,6 +64,7 @@ describe('MasterList', () => {
           useValue: overlayContainerServiceSpyObj,
         },
         { provide: MasterCrudService, useClass: MockMasterCrudService },
+        ChangeDetectorRef,
       ],
     });
 
@@ -69,7 +72,8 @@ describe('MasterList', () => {
     overlayContainerServiceSpy = TestBed.inject(
       SmarOverlayContainerService,
     ) as jasmine.SpyObj<SmarOverlayContainerService>;
-    masterList = new SaleListComponent(crudServiceSpy as any, overlayContainerServiceSpy);
+    changeDetectorRefSpy = TestBed.inject(ChangeDetectorRef) as jasmine.SpyObj<ChangeDetectorRef>;
+    masterList = new SaleListComponent(crudServiceSpy as any, overlayContainerServiceSpy, changeDetectorRefSpy);
     httpMock = TestBed.inject(HttpTestingController);
     mockRequest = of('response data');
   });
