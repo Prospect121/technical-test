@@ -33,7 +33,7 @@ To start the project, follow these steps:
 
 ## Application deployed
 
-     `https://technical-test-hh2wcu3ej-prospect121.vercel.app/`
+     `https://technical-test-j9tuhtpa8-prospect121.vercel.app/`
 
 ##Build
 
