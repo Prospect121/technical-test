@@ -9,12 +9,16 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'sale',
+        redirectTo: 'report-covid',
         pathMatch: 'full',
       },
       {
         path: 'sale',
         loadChildren: () => import('../pages/sale/sale.module').then((m) => m.SaleModule),
+      },
+      {
+        path: 'report-covid',
+        loadChildren: () => import('../pages/report-covid/report-covid.module').then((m) => m.ReportCovidModule),
       },
     ],
   },
