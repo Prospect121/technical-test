@@ -52,6 +52,7 @@ Run `npm run test:coverage` to execute the unit tests via [Karma](https://karma-
 ## 1. Fake Login
 
 In this view, you can log in with any email and password. It is a fake functionality for demonstration.
+To log in you only need to enter a valid email address and a password.
 
 ## 2. CSV File Analysis Report
 
