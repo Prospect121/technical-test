@@ -33,7 +33,7 @@ To start the project, follow these steps:
 
 ## Application deployed
 
-     ` https://technical-test-nine.vercel.app/ `
+     https://technical-test-nine.vercel.app/
 
 ##Build
 
