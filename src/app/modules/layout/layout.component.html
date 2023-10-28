@@ -1,1 +1,21 @@
-<router-outlet></router-outlet>
+<div class="flex h-screen w-full overflow-hidden">
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <div class="flex grow flex-col content-start bg-gray-100">
+    <!-- Header -->
+    <app-navbar />
+
+    <!-- Main content -->
+    <div
+      class="sscrollbar-thumb-rounded scrollbar-track-rounded grow overflow-auto scrollbar-thin scrollbar-thumb-white scrollbar-track-gray-100">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- footer -->
+    <app-footer></app-footer>
+
+    <!-- Bottom bar -->
+    <!-- <app-bottom-navbar></app-bottom-navbar> -->
+  </div>
+</div>

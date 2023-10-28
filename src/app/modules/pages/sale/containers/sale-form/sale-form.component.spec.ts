@@ -6,7 +6,7 @@ import { FormBuilder } from '@angular/forms';
 import { MasterCrudService } from 'src/app/core/services/master-crud/master-crud.service';
 import { MockMasterCrudService } from 'src/app/core/model/master-form/master-form.spec';
 import { FormErrorsService } from 'src/app/core/services/form-errors/form-errors.service';
-import { SmarOverlayContainerService } from 'src/app/core/services/zb-overlay-container/zb-overlay-container.service';
+import { SmarOverlayContainerService } from 'src/app/core/services/overlay-container/overlay-container.service';
 import { SaleAdapter } from './adapters/sale-adapter';
 
 class FakeAdapter {}

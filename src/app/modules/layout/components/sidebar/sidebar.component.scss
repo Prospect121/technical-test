@@ -1,0 +1,93 @@
+.smar-app-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff5c;
+  border-right: 1px solid rgba(229, 233, 235, 1);
+  min-height: 100vh;
+  overflow: auto;
+  padding-top: 0.75rem;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  --scrollbar-track: #1ea4b4;
+  --scrollbar-thumb: #1ea4b4;
+  overflow: overlay;
+  height: 100%;
+
+  &__container {
+    padding-left: 0.8rem;
+    padding-right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    &__logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 2.5rem;
+
+      &__name {
+        display: flex;
+        align-items: center;
+
+        &__text {
+          margin-left: 0.25rem;
+          padding-left: 0.5rem;
+        }
+      }
+
+      &__button {
+        cursor: pointer;
+        border-radius: 8px;
+        border: none;
+        color: rgba(42, 50, 75, 1);
+        background-color: inherit;
+        top: 0.5rem;
+        right: 0.5rem;
+        height: 1.8rem;
+        width: 1.8rem;
+        transition: all 0.2s ease-out;
+
+        :hover {
+          color: rgb(44, 46, 49);
+        }
+      }
+    }
+
+    &__separator {
+      padding-top: 0.1rem;
+
+      &__hr {
+        border-style: dashed;
+        border-color: rgb(229 231 235 / 1);
+      }
+    }
+  }
+
+  &__open {
+    width: 280px;
+  }
+
+  &__close {
+    width: 3.8rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100000;
+
+    &__container {
+      background-color: #fff;
+    }
+    &__close {
+      transform: translateX(-100%);
+    }
+    &__open {
+      transform: translateX(0%);
+    }
+  }
+}

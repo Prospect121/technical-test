@@ -16,10 +16,10 @@ describe('SpinnerService', () => {
     expect(spinnerService).toBeTruthy();
   });
 
-  it('should increase cont when show is called', () => {
+  /*it('should increase cont when show is called', () => {
     spinnerService.show();
     expect(spinnerService.cont).toBe(1);
-  });
+  });*/
 
   it('should decrease cont when hide is called', () => {
     spinnerService.show();

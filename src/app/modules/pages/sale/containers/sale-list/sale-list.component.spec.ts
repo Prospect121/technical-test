@@ -6,7 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { SmarOverlayContainerService } from 'src/app/core/services/zb-overlay-container/zb-overlay-container.service';
+import { SmarOverlayContainerService } from 'src/app/core/services/overlay-container/overlay-container.service';
 import { MasterCrudService } from 'src/app/core/services/master-crud/master-crud.service';
 
 describe('SaleListComponent', () => {

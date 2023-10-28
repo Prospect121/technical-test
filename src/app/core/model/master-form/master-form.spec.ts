@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MasterCrudService } from '../../services/master-crud/master-crud.service';
-import { SmarOverlayContainerService } from '../../services/zb-overlay-container/zb-overlay-container.service';
+import { SmarOverlayContainerService } from '../../services/overlay-container/overlay-container.service';
 import { FormErrorsService } from '../../services/form-errors/form-errors.service';
 import { MasterForm } from './master-form';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,7 +29,7 @@ export class MockMasterCrudService {
     return of({});
   }
 }
-class MockZbOverlayContainerService {
+class MockSmarOverlayContainerService {
   close() {}
 }
 class MockFormErrorsService {
@@ -80,7 +80,7 @@ describe('MasterForm', () => {
       ],
       providers: [
         { provide: MasterCrudService, useClass: MockMasterCrudService },
-        { provide: SmarOverlayContainerService, useClass: MockZbOverlayContainerService },
+        { provide: SmarOverlayContainerService, useClass: MockSmarOverlayContainerService },
         { provide: FormErrorsService, useClass: MockFormErrorsService },
       ],
     });
