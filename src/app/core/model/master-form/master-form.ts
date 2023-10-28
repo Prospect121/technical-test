@@ -5,7 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { ICrudder } from '../../interfaces/icrudder';
 import { MasterCrudService } from '../../services/master-crud/master-crud.service';
 import { commonFieldsModelForms } from '../../common-fields/common-fields.model';
-import { SmarOverlayContainerService } from '../../services/zb-overlay-container/zb-overlay-container.service';
+import { SmarOverlayContainerService } from '../../services/overlay-container/overlay-container.service';
 import { IControls } from '../../interfaces/icontrols';
 import { FormErrorsService } from '../../services/form-errors/form-errors.service';
 

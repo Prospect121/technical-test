@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { SmarOverlayContainerService } from './zb-overlay-container.service';
+import { SmarOverlayContainerService } from './overlay-container.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 

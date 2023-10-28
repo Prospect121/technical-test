@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SmarOverlayContainerService } from 'src/app/core/services/zb-overlay-container/zb-overlay-container.service';
+import { SmarOverlayContainerService } from 'src/app/core/services/overlay-container/overlay-container.service';
 
 import { MasterList } from 'src/app/core/model/mastar-list/master-list';
 import { MasterCrudService } from 'src/app/core/services/master-crud/master-crud.service';

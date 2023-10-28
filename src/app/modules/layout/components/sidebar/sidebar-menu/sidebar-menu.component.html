@@ -1,0 +1,95 @@
+<div class="smar-app-sidebar-menu" *ngFor="let menu of pagesMenu$ | async">
+  <div class="smar-app-sidebar-menu__separator" *ngIf="menu.separator">
+    <hr class="smar-app-sidebar-menu__separator__hr" />
+  </div>
+  <ul
+    [ngClass]="(showSideBar$ | async) ? 'smar-app-sidebar-menu__container__active' : ''"
+    class="smar-app-sidebar-menu__container">
+    <!-- List items -->
+    <li *ngFor="let item of menu.items" (click)="mobileToggle()">
+      <!-- Menu List -->
+      <div class="group smar-app-sidebar-menu__container__list">
+        <!-- Icon -->
+        <div
+          [ngClass]="item.active ? 'smar-app-sidebar-menu__container__list__icon__active' : ''"
+          class="smar-app-sidebar-menu__container__list__icon">
+          <svg-icon src="{{ item.icon }}" [svgClass]="'h-5 w-5'"> </svg-icon>
+        </div>
+
+        <!-- Condition -->
+        <ng-container
+          [ngTemplateOutlet]="item.children ? childMenu : parentMenu"
+          [ngTemplateOutletContext]="{ item: item }">
+        </ng-container>
+
+        <!-- Workaround:: Enable routerLink -->
+        <ng-template #parentMenu let-item="item">
+          <div routerLink="{{ item.route }}" class="smar-app-sidebar-menu__container__list__section">
+            <a
+              routerLinkActive="smar-app-sidebar-menu__container__list__section__router__active"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="smar-app-sidebar-menu__container__list__section__router">
+              {{ item.label | translate }}
+            </a>
+          </div>
+        </ng-template>
+
+        <ng-template #childMenu let-item="item" (click)="toggleMenu(item)">
+          <div (click)="toggleMenu(item)" class="smar-app-sidebar-menu__container__list__section">
+            <a class="smar-app-sidebar-menu__container__list__section__router">
+              {{ item.label | translate }}
+            </a>
+          </div>
+
+          <!-- Arrow Icon -->
+          <button
+            *ngIf="item.children"
+            [ngClass]="{
+              hidden: !(showSideBar$ | async),
+              'smar-app-sidebar-menu__container__list__arrow-icon__close': item.expanded
+            }"
+            class="smar-app-sidebar-menu__container__list__arrow-icon">
+            <svg-icon src="assets/icons/outline/arrow-sm-right.svg" [svgClass]="'h-5 w-5'"> </svg-icon>
+          </button>
+
+          <ng-container *ngIf="item.expanded">
+            <ng-container *ngTemplateOutlet="subMenu"></ng-container>
+          </ng-container>
+        </ng-template>
+
+        <ng-template #subMenu>
+          <div class="smar-app-sidebar-menu__container__sub-menu__menu">
+            <ng-container *ngFor="let children of item.children">
+              <div routerLink="{{ children.route }}" class="smar-app-sidebar-menu__container__sub-menu__menu__section">
+                <!-- Icon -->
+                <div
+                  routerLinkActive="smar-app-sidebar-menu__container__sub-menu__menu__section__icon__active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  class="smar-app-sidebar-menu__container__sub-menu__menu__section__icon">
+                  <ng-container [ngComponentOutlet]="children.icon"></ng-container>
+                </div>
+
+                <a
+                  routerLinkActive="smar-app-sidebar-menu__container__sub-menu__menu__section__router__active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  class="smar-app-sidebar-menu__container__sub-menu__menu__section__router">
+                  {{ children.label ?? '' | translate }}
+                </a>
+              </div>
+            </ng-container>
+          </div>
+        </ng-template>
+
+        <!-- Tooltip -->
+        <div class="smar-app-sidebar-menu__container__list__tooltip" *ngIf="!(showSideBar$ | async)">
+          <span class="group-hover smar-app-sidebar-menu__container__list__tooltip__section">
+            {{ item.label ?? '' | translate }}
+          </span>
+        </div>
+      </div>
+
+      <!-- Submenu items -->
+      <!-- <app-sidebar-submenu [submenu]="item"></app-sidebar-submenu> -->
+    </li>
+  </ul>
+</div>

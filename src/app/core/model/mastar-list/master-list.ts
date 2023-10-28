@@ -2,7 +2,7 @@ import { MasterCrudService } from './../../services/master-crud/master-crud.serv
 import { ICrudder } from './../../interfaces/icrudder';
 import { AfterViewInit, Directive, Inject, Injector, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription, filter, map } from 'rxjs';
-import { SmarOverlayContainerService } from '../../services/zb-overlay-container/zb-overlay-container.service';
+import { SmarOverlayContainerService } from '../../services/overlay-container/overlay-container.service';
 
 import { ComponentPortal } from '@angular/cdk/portal';
 import { SaleFormComponent } from 'src/app/modules/pages/sale/containers/sale-form/sale-form.component';

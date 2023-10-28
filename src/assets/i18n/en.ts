@@ -81,6 +81,10 @@ export const locale = {
         askRegistre: 'Not a Member yet?',
         registre: 'Sign up',
       },
+      menu: {
+        sale: 'Sale',
+        covid: 'Covid19 Report',
+      },
     },
   },
 };

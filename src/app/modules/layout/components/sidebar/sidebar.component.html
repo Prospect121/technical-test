@@ -1,0 +1,18 @@
+<nav [ngClass]="(showSideBar$ | async) ? 'smar-app-sidebar__open' : 'smar-app-sidebar__close'" class="smar-app-sidebar">
+  <div class="smar-app-sidebar__container">
+    <!-- Logo -->
+    <div class="smar-app-sidebar__container__logo">
+      <button
+        (click)="toggleSidebar()"
+        class="smar-app-sidebar__container__logo__button"
+        [ngClass]="{
+          'smar-app-sidebar__container__logo__button__close': !(showSideBar$ | async)
+        }">
+        <img src="assets/icons/logo.png" alt="" />
+      </button>
+    </div>
+
+    <!-- Menu Items -->
+    <app-sidebar-menu></app-sidebar-menu>
+  </div>
+</nav>

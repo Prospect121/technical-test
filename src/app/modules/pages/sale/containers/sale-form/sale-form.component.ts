@@ -5,7 +5,7 @@ import { IControls } from 'src/app/core/interfaces/icontrols';
 import { MasterForm } from 'src/app/core/model/master-form/master-form';
 import { FormErrorsService } from 'src/app/core/services/form-errors/form-errors.service';
 import { MasterCrudService } from 'src/app/core/services/master-crud/master-crud.service';
-import { SmarOverlayContainerService } from 'src/app/core/services/zb-overlay-container/zb-overlay-container.service';
+import { SmarOverlayContainerService } from 'src/app/core/services/overlay-container/overlay-container.service';
 import { SaleAdapter } from './adapters/sale-adapter';
 import regExp from 'src/app/shared/regExp';
 import { environment } from 'src/environments/environment';

@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { SmarOverlayContainerService } from '../../services/zb-overlay-container/zb-overlay-container.service';
+import { SmarOverlayContainerService } from '../../services/overlay-container/overlay-container.service';
 import { SaleListComponent } from 'src/app/modules/pages/sale/containers/sale-list/sale-list.component';
 
 class MockMasterCrudService {

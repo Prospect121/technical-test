@@ -7,16 +7,20 @@ export class SpinnerService {
   isLoading$ = new Subject<boolean>();
 
   show(): void {
-    if (this.cont === 0) {
-      this.isLoading$.next(true);
-    }
-    this.cont++;
+    setTimeout(() => {
+      if (this.cont === 0) {
+        this.isLoading$.next(true);
+      }
+      this.cont++;
+    }, 100);
   }
 
   hide(): void {
-    this.cont--;
-    if (this.cont === 0) {
-      this.isLoading$.next(false);
-    }
+    setTimeout(() => {
+      this.cont--;
+      if (this.cont === 0) {
+        this.isLoading$.next(false);
+      }
+    }, 100);
   }
 }
