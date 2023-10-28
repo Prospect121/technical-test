@@ -50,7 +50,7 @@ export const locale = {
             add: 'Agregar venta',
           },
           search: 'Buscar...',
-          noSearch: 'No se enontraron registros',
+          noSearch: 'No se encontraron registros',
           table: {
             pointSale: 'Punto de venta',
             nameOperator: 'Nombre del vendedor',
