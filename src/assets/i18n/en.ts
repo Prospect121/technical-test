@@ -59,6 +59,17 @@ export const locale = {
           },
         },
       },
+      reportCovid: {
+        title: 'Covid19 Report',
+        answer: {
+          maxState: 'State with highest accumulated: ',
+          minState: 'State with the smallest accumulated: ',
+          mostAffected: {
+            part1: 'Most impacted state: ',
+            part2: 'This state has the highest percentage in relation to its population',
+          },
+        },
+      },
     },
   },
 };

@@ -60,6 +60,17 @@ export const locale = {
           },
         },
       },
+      reportCovid: {
+        title: 'Reporte Covid19',
+        answer: {
+          maxState: 'Estado con el mayor acumulado: ',
+          minState: 'Estado con el menor acumulado: ',
+          mostAffected: {
+            part1: 'Estado más impactado: ',
+            part2: ' Este estado tiene el mayor porcentaje en relación a su población',
+          },
+        },
+      },
     },
   },
 };
