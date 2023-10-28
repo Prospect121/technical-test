@@ -1,14 +1,35 @@
 # TechnicalTest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+Este es un proyecto de **Angular (v16.1.6)** que consta de tres vistas principales: **Login falso**, **Reporte de Análisis de archivo CSV** y **Vista de Ventas (CRUD)**.
 
-## Development server
+## Inicio Rápido
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Para iniciar el proyecto, sigue estos pasos:
 
-## Code scaffolding
+1.  Clona este repositorio o descárgalo en tu máquina.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2.  Abre una terminal en la ubicación del proyecto y ejecuta el siguiente comando para instalar las dependencias necesarias:
+
+    ```bash
+    npm install
+    ```
+
+3.  Una vez que se completen las instalaciones, puedes iniciar la aplicación Angular. Utiliza uno de los siguientes comandos:
+
+    ```bash
+    ng serve
+    ```
+
+    o
+
+    ```bash
+    npm start
+    ```
+
+4.  La aplicación se ejecutará en el puerto 4200 de forma predeterminada. Abre tu navegador web e ingresa la siguiente URL para acceder al proyecto:
+    ```bash
+    http://localhost:4200
+    ```
 
 ## Build
 
@@ -18,10 +39,20 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Running unit tests COVERGAE
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `npm run test:coverage` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Further help
+# Vistas Principales
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 1. Login Falso
+
+En esta vista, puedes iniciar sesión con cualquier correo y contraseña. Es una funcionalidad falsa para demostración.
+
+## 2. Reporte de Análisis de Archivo CSV
+
+Esta vista te permite realizar un análisis de un archivo CSV. Proporciona detalles sobre cómo cargar y analizar el archivo CSV.
+
+## 3. Vista de Ventas (CRUD)
+
+En esta vista, puedes realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) en registros de ventas. Proporciona detalles sobre cómo utilizar esta funcionalidad.
