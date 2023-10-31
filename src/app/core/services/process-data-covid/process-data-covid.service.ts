@@ -91,34 +91,30 @@ export class ProcessDataCovidService {
   }
 
   private _findStateWithHighestTotal(dataList: CsvData[]): void {
-    let dataResult: any = {};
+    const dataResult: Record<string, { total: number; population: number; percentage: number }> = {};
 
-    for (const data of dataList) {
+    dataList.forEach((data) => {
       let total = 0;
-      let totalPopulation = 0;
-      for (const prop in data) {
+      Object.keys(data).forEach((prop) => {
         if (this._isValidDateFormat(prop)) {
           total += data[prop];
         }
-        totalPopulation += data.Population;
-      }
-      if (!dataResult[data.Province_State]) {
-        dataResult[data.Province_State] = {};
-      }
-      const cont = dataResult[data.Province_State]?.['total'] ?? 0;
-      const contPopulation = dataResult[data.Province_State]?.['population'] ?? 0;
-      dataResult[data.Province_State]['total'] = cont > 0 ? cont + total : total;
-      dataResult[data.Province_State]['population'] =
-        contPopulation > 0 ? contPopulation + totalPopulation : totalPopulation;
-      dataResult[data.Province_State]['percentage'] = this._calculatePercentage(dataResult[data.Province_State]);
-    }
+      });
+      const { Province_State, Population } = data;
+      dataResult[Province_State] = dataResult[Province_State] || { total: 0, population: 0 };
+      dataResult[Province_State].total += total;
+      dataResult[Province_State].population += Population;
+      dataResult[Province_State].percentage = this._calculatePercentage(dataResult[Province_State]);
+    });
+
     const { maxKey, maxValue, minKey, minValue } = this._findMaxAndMin(dataResult);
 
-    const maxStateName = maxKey;
-    const maxState = maxValue;
-
-    const minStateName = minKey;
-    const minState = minValue;
+    const { maxStateName, maxState, minStateName, minState } = {
+      maxStateName: maxKey,
+      maxState: maxValue,
+      minStateName: minKey,
+      minState: minValue,
+    };
 
     const mostAffected = this._findMaxPercentage(dataResult);
     const dataForGraph = this._getLabelAndPercentageData(dataResult);
